@@ -229,7 +229,8 @@ Print::invalidate_state_by_config_options(const std::vector<t_config_option_key>
             || *opt_key == "use_relative_e_distances"
             || *opt_key == "vibration_limit"
             || *opt_key == "wipe"
-            || *opt_key == "z_offset") {
+            || *opt_key == "z_offset"
+            || *opt_key == "makerbot_pwm_fan") {
             // these options only affect G-code export, so nothing to invalidate
         } else if (*opt_key == "first_layer_extrusion_width") {
             osteps.insert(posPerimeters);

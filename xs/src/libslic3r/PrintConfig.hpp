@@ -319,6 +319,7 @@ class GCodeConfig : public virtual StaticPrintConfig
     ConfigOptionBool                use_firmware_retraction;
     ConfigOptionBool                use_relative_e_distances;
     ConfigOptionBool                use_volumetric_e;
+    ConfigOptionBool                makerbot_pwm_fan;
     
     GCodeConfig(bool initialize = true) : StaticPrintConfig() {
         if (initialize)
@@ -356,6 +357,7 @@ class GCodeConfig : public virtual StaticPrintConfig
         OPT_PTR(use_firmware_retraction);
         OPT_PTR(use_relative_e_distances);
         OPT_PTR(use_volumetric_e);
+        OPT_PTR(makerbot_pwm_fan);
         
         return NULL;
     };

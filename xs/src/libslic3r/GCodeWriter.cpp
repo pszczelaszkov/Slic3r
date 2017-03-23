@@ -147,7 +147,14 @@ GCodeWriter::set_fan(unsigned int speed, bool dont_save)
             gcode << "\n";
         } else {
             if (FLAVOR_IS(gcfMakerWare) || FLAVOR_IS(gcfSailfish)) {
-                gcode << "M126";
+                if(this->config.makerbot_pwm_fan)
+                {
+                    gcode << "M126 ";
+                    gcode << "S";
+                    gcode << (255.0 * speed / 100.0);
+                }
+                else
+                    gcode << "M126";
             } else {
                 gcode << "M106 ";
                 if (FLAVOR_IS(gcfMach3) || FLAVOR_IS(gcfMachinekit)) {

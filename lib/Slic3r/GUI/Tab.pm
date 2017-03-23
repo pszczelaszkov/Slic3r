@@ -1085,7 +1085,7 @@ sub build {
         gcode_flavor use_relative_e_distances
         serial_port serial_speed
         octoprint_host octoprint_apikey
-        use_firmware_retraction pressure_advance vibration_limit
+        use_firmware_retraction makerbot_pwm_fan pressure_advance vibration_limit
         use_volumetric_e
         start_gcode end_gcode before_layer_gcode layer_gcode toolchange_gcode
         nozzle_diameter extruder_offset
@@ -1222,6 +1222,7 @@ sub build {
         {
             my $optgroup = $page->new_optgroup('Firmware');
             $optgroup->append_single_option_line('gcode_flavor');
+            $optgroup->append_single_option_line('makerbot_pwm_fan');
         }
         {
             my $optgroup = $page->new_optgroup('Advanced');
@@ -1385,7 +1386,6 @@ sub _update {
     my ($self) = @_;
     
     my $config = $self->{config};
-    
     my $serial_speed = $self->get_field('serial_speed');
     if ($serial_speed) {
         $self->get_field('serial_speed')->toggle($config->get('serial_port'));

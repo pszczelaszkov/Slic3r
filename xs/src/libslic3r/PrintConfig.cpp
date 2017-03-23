@@ -1518,6 +1518,12 @@ PrintConfigDef::PrintConfigDef()
     def->tooltip = "Set this to the number of *full* steps (not microsteps) needed for moving the Z axis by 1mm; you can calculate this by dividing the number of microsteps configured in your firmware by the microstepping amount (8, 16, 32). Slic3r will round your configured layer height to the nearest multiple of that value in order to ensure the best accuracy. This is most useful for machines with imperial leadscrews or belt-driven Z or for unusual layer heights with metric leadscrews. Set to zero to disable this experimental feature.";
     def->cli = "z-steps-per-mm=f";
     def->default_value = new ConfigOptionFloat(0);
+
+    def = this->add("makerbot_pwm_fan", coBool);
+    def->label = "Makerbot PWM Fan";
+    def->tooltip = "This setting sends M126 command alongside with fan S value, supported in modified firmware only.";
+    def->cli = "makerbot-pwm-fan!";
+    def->default_value = new ConfigOptionBool(false);
 }
 
 PrintConfigDef print_config_def;

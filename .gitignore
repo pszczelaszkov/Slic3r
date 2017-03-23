@@ -7,6 +7,11 @@ _build
 blib
 xs/buildtmp
 *.o
+*.old
+*.dll
+*.exe
+*.res
+*.zip
 MANIFEST.bak
 xs/MANIFEST.bak
 xs/assertlib*
